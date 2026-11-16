@@ -1,0 +1,116 @@
+@import "tailwindcss";
+@source "./theme.ts";
+/* Ensures Tailwind v4 reads your theme.ts file! */
+
+:root {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-serif: "Playfair Display", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+
+  /* Added these to support your new base layer variables */
+  --text-light: #e2e8f0;
+  --gold-light: #d4af37;
+
+  --color-gold-400: #f6e05e;
+  --color-gold-500: #ecc94b;
+  --color-gold-600: #d69e2e;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    color: var(--text-light);
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+
+    /* Ultra-Premium Dark Emerald Background 
+       Uses near-black forest greens for depth and a subtle gold glow
+    */
+    background:
+      radial-gradient(circle at top left, rgba(16, 46, 26, 0.6), transparent 40%),
+      radial-gradient(circle at top right, rgba(212, 175, 55, 0.08), transparent 30%),
+      radial-gradient(circle at bottom right, rgba(6, 24, 11, 0.8), transparent 50%),
+      linear-gradient(135deg,
+        #020b04 0%,
+        /* Almost black with a hint of green */
+        #051708 40%,
+        /* Deepest forest green */
+        #09210e 80%,
+        /* Rich dark emerald */
+        #020b04 100%);
+
+    background-attachment: fixed;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Luxury glowing overlay */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -10;
+    pointer-events: none;
+
+    background-image:
+      radial-gradient(rgba(255, 215, 0, 0.08) 1px, transparent 1px);
+
+    background-size: 40px 40px;
+    opacity: 0.4;
+  }
+
+  /* Premium golden headings */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-serif);
+    color: var(--gold-light);
+    letter-spacing: 0.5px;
+  }
+
+  /* Smooth text rendering */
+  p,
+  span,
+  li,
+  a {
+    color: #f8f5e4;
+  }
+
+  /* Premium selection */
+  ::selection {
+    background-color: rgba(212, 175, 55, 0.35);
+    color: white;
+  }
+
+  /* Beautiful scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #002200;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom,
+        #d4af37,
+        #ffd700,
+        #b8860b);
+    border-radius: 999px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom,
+        #ffd700,
+        #fff4b0,
+        #d4af37);
+  }
+}
