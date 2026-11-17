@@ -11,6 +11,10 @@ import { AdminBooksPage } from './pages/admin/AdminBooksPage'
 import { AdminLoginPage } from './pages/admin/AdminLoginPage'
 import { AdminModulePage } from './pages/admin/AdminModulePage'
 import { AdminResearchPapersPage } from './pages/admin/AdminResearchPapersPage'
+import { RequireAuthor } from './components/author/RequireAuthor'
+import { AuthorDashboardPage } from './pages/author/AuthorDashboardPage'
+import { AuthorLoginPage } from './pages/author/AuthorLoginPage'
+import { AuthorRegisterPage } from './pages/author/AuthorRegisterPage'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -18,6 +22,16 @@ createRoot(document.getElementById('root')!).render(
       <AuthProvider>
         <Routes>
           <Route path="/admin/login" element={<AdminLoginPage />} />
+          <Route path="/author/register" element={<AuthorRegisterPage />} />
+          <Route path="/author/login" element={<AuthorLoginPage />} />
+          <Route
+            path="/author/dashboard"
+            element={
+              <RequireAuthor>
+                <AuthorDashboardPage />
+              </RequireAuthor>
+            }
+          />
           <Route
             path="/admin"
             element={
