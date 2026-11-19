@@ -101,11 +101,6 @@ export async function getAuthorDashboardData(
       ])
 
     if (profileResult.error) throw profileResult.error
-    if (!profileResult.data) {
-      throw new AuthorDashboardServiceError(
-        'Your author profile was not found. Please contact the Research Center administrator.',
-      )
-    }
 
     const articleResults = [
       totalResult,
@@ -117,7 +112,7 @@ export async function getAuthorDashboardData(
     if (failedResult?.error) throw failedResult.error
 
     return {
-      fullName: profileResult.data.full_name,
+      fullName: profileResult.data?.full_name ?? null,
       email,
       totalArticles: requireCount(totalResult.count),
       draftArticles: requireCount(draftResult.count),

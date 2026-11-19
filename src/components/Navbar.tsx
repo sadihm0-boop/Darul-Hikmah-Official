@@ -28,15 +28,25 @@ const Navbar: React.FC<NavbarProps> = ({ setCurrentPage }) => {
     { name: 'Programs', id: 'programs' },
     { name: 'Departments', id: 'departments' },
     { name: 'Founder', id: 'founder' },
+    { name: 'Books', id: 'books' },
+    { name: 'Research Papers', id: 'research-papers' },
     { name: 'Articles', id: 'articles' },
   ];
 
   // 3. Helper function to change the page and reset the view
   const handleNavigate = (id: string) => {
-    if (id === 'articles') {
-      navigate('/articles');
-    } else {
-      setCurrentPage(id);
+    switch (id) {
+      case 'books':
+        navigate('/books');
+        break;
+      case 'research-papers':
+        navigate('/research-papers');
+        break;
+      case 'articles':
+        navigate('/articles');
+        break;
+      default:
+        setCurrentPage(id);
     }
     setIsMobileMenuOpen(false); // Close mobile menu if it was open
     window.scrollTo(0, 0); // Scroll nicely to the top
@@ -58,23 +68,23 @@ const Navbar: React.FC<NavbarProps> = ({ setCurrentPage }) => {
           </div>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-10">
+          <div className="hidden lg:flex items-center gap-3 xl:gap-6">
             {navLinks.map((link) => (
               <button
                 key={link.name}
                 onClick={() => handleNavigate(link.id)}
-                className={`${theme.navLink} text-sm uppercase tracking-widest bg-transparent border-none cursor-pointer`}
+                className={`${theme.navLink} text-xs xl:text-sm uppercase tracking-widest bg-transparent border-none cursor-pointer`}
               >
                 {link.name}
               </button>
             ))}
-            <button onClick={() => handleNavigate('home')} className="px-6 py-2.5 bg-white text-indigo-950 rounded-lg font-bold hover:bg-indigo-50 transition-all text-sm uppercase tracking-wider shadow-xl active:scale-95 cursor-pointer">
+            <button onClick={() => handleNavigate('home')} className="px-3 py-2.5 bg-white text-indigo-950 rounded-lg font-bold hover:bg-indigo-50 transition-all text-xs xl:px-6 xl:text-sm uppercase tracking-wider shadow-xl active:scale-95 cursor-pointer">
               Enroll Now
             </button>
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className={`text-white p-2 ${theme.glassPanel.replace('rounded-2xl', 'rounded-lg')}`}>
               {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -84,7 +94,7 @@ const Navbar: React.FC<NavbarProps> = ({ setCurrentPage }) => {
 
       {/* Mobile Nav */}
       {isMobileMenuOpen && (
-        <div className={`md:hidden mt-2 mx-4 ${theme.glassPanel} py-6 px-6 space-y-6 animate-in fade-in slide-in-from-top-4`}>
+        <div className={`lg:hidden mt-2 mx-4 ${theme.glassPanel} py-6 px-6 space-y-6 animate-in fade-in slide-in-from-top-4`}>
           {navLinks.map((link) => (
             <button
               key={link.name}

@@ -19,12 +19,18 @@ import { AuthorLoginPage } from './pages/author/AuthorLoginPage'
 import { AuthorRegisterPage } from './pages/author/AuthorRegisterPage'
 import { PublicArticlePage } from './pages/public/PublicArticlePage'
 import { PublicArticlesPage } from './pages/public/PublicArticlesPage'
+import { PublicBooksPage } from './pages/public/PublicBooksPage'
+import { PublicResearchPapersPage } from './pages/public/PublicResearchPapersPage'
+import { PublicBookPage } from './pages/public/PublicBookPage'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
       <AuthProvider>
         <Routes>
+          <Route path="/books/:bookId" element={<PublicBookPage />} />
+          <Route path="/books" element={<PublicBooksPage />} />
+          <Route path="/research-papers" element={<PublicResearchPapersPage />} />
           <Route path="/articles" element={<PublicArticlesPage />} />
           <Route path="/articles/:articleId" element={<PublicArticlePage />} />
           <Route path="/admin/login" element={<AdminLoginPage />} />

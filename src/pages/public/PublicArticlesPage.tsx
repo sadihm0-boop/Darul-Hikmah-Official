@@ -49,7 +49,7 @@ export function PublicArticlesPage() {
   }, [retryVersion])
 
   return (
-    <PublicArticleLayout>
+    <PublicArticleLayout currentPage="articles">
       <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-20 lg:px-8">
         <header className="mx-auto mb-10 max-w-3xl text-center sm:mb-14">
           <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#d4af37]">
@@ -61,6 +61,12 @@ export function PublicArticlesPage() {
           <p className="mt-4 text-base leading-7 text-amber-50/75">
             Explore published reflections and research from our contributors.
           </p>
+          <Link
+            to="/author/login"
+            className="mt-6 inline-flex min-h-11 w-full items-center justify-center rounded-lg bg-gradient-to-r from-[#d4af37] via-[#ffd700] to-[#b8860b] px-6 py-3 text-sm font-bold uppercase tracking-wider text-[#08200e] shadow-lg transition hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#ffd700] sm:w-auto"
+          >
+            Submit Your Article
+          </Link>
         </header>
 
         {isLoading ? (
