@@ -146,7 +146,8 @@ function ReviewFeedbackPanel({
 
 function getRouteMessage(state: unknown, key: 'notice' | 'error'): string | null {
   if (typeof state !== 'object' || state === null || !(key in state)) return null
-  const message = state[key]
+  const routeState: Partial<Record<'notice' | 'error', unknown>> = state
+  const message = routeState[key]
   return typeof message === 'string' ? message : null
 }
 
