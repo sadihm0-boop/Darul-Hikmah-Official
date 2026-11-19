@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { theme } from '../theme';
 
 // 1. Tell TypeScript that Navbar will receive the setCurrentPage function
@@ -10,6 +11,7 @@ interface NavbarProps {
 const Navbar: React.FC<NavbarProps> = ({ setCurrentPage }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,11 +28,16 @@ const Navbar: React.FC<NavbarProps> = ({ setCurrentPage }) => {
     { name: 'Programs', id: 'programs' },
     { name: 'Departments', id: 'departments' },
     { name: 'Founder', id: 'founder' },
+    { name: 'Articles', id: 'articles' },
   ];
 
   // 3. Helper function to change the page and reset the view
   const handleNavigate = (id: string) => {
-    setCurrentPage(id);
+    if (id === 'articles') {
+      navigate('/articles');
+    } else {
+      setCurrentPage(id);
+    }
     setIsMobileMenuOpen(false); // Close mobile menu if it was open
     window.scrollTo(0, 0); // Scroll nicely to the top
   };
