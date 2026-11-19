@@ -18,7 +18,7 @@ const Hero: React.FC = () => {
           transition={{ duration: 0.8 }}
         >
           <span className={`inline-block px-5 py-2 mb-8 text-xs font-black tracking-[0.25em] text-indigo-300 uppercase ${theme.glassPanel.replace('rounded-2xl', 'rounded-full')} border-white/5`}>
-            Est. {siteData.foundationYear} | Academy of Classical Sciences
+            Est. {siteData.foundationYear} | The House of Wisdom
           </span>
           <h1 className="text-6xl md:text-8xl lg:text-9xl font-black text-white mb-8 leading-[1.05] tracking-tight">
             Unveiling the <br />

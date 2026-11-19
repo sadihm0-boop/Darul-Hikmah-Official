@@ -49,7 +49,7 @@ export interface SiteData {
 export const siteData: SiteData = {
   instituteName: "Darul Hikmah",
   foundationYear: 2024,
-  announcement: "Special Launch Announcements | Foundation Date: 2024",
+  announcement: "Special Launch Announcements | Foundation Date: 18 Dec 2024",
   missionStatement: "Preserving the legacy of classical Islamic scholarship through rigorous academic inquiry and spiritual refinement.",
   aboutOverview: "Darul Hikmah is a premier Islamic educational institute dedicated to bridging the gap between traditional wisdom and contemporary challenges. We offer a comprehensive curriculum through both online and offline modes of learning, ensuring accessibility for seekers of knowledge worldwide.",
   courses: [
